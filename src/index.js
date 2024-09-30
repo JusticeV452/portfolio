@@ -5,7 +5,7 @@ import Home from './Home';
 import Projects from './Projects';
 import reportWebVitals from './reportWebVitals';
 import SiteNav from './components/SiteNav';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,6 +17,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   </React.StrictMode>

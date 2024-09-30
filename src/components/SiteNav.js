@@ -1,7 +1,6 @@
 import React from "react";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,7 +16,7 @@ function SiteNav() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
-            <Nav.Link href="/">Projects</Nav.Link>
+            <Nav.Link href="/projects">Projects</Nav.Link>
             <Nav.Link href="https://github.com/JusticeV452">GitHub</Nav.Link>
             <Nav.Link href="https://www.linkedin.com/in/justice-vidal-838471121/">LinkedIn</Nav.Link>
           </Nav>

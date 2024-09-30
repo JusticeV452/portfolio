@@ -1,4 +1,5 @@
 import React from "react";
+import ReactPlayer from "react-player";
 import { Container, Row, Image } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,6 +19,7 @@ import audioAmpDiagram from "./img/audio_amp_diagram.png";
 import hbridge from "./img/20211209_163529.jpg"
 import PWMSwitch from "./img/pwm_switch.png"
 import hbridgeDiagram from "./img/hbridge_diagram.png"
+import hbridgeVideo from "./videos/20211209_163327_web.mp4"
 
 export default function Projects() {
   return <Container id="home-page">
@@ -122,6 +124,15 @@ export default function Projects() {
         <div className="img-row">
           <Image src={hbridge} rounded/>
           <Image src={PWMSwitch} rounded />
+        </div>
+        <div className='player-wrapper'>
+          <ReactPlayer
+            className='react-player'
+            url={hbridgeVideo}
+            width='100%'
+            height='100%'
+            controls = {true}
+          />
         </div>
     </Row>
   </Container>;

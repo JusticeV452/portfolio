@@ -9,6 +9,15 @@ import keyboardImg from "./img/keyboard_and_esp.jpg";
 import keyboardInternals from "./img/keyboard_internal_contacts.jpg";
 import SETMLModel from "./img/setml_model_test.png";
 import thesisDevBoard from "./img/STM32C0116-DK.png"
+import paris1970 from "./img/paris_1970_home.png";
+import paris1970Map from "./img/paris_1970_map.png";
+import DDD from "./img/datadrivendemocracy.png";
+import DDDMap from "./img/ddd_map.png";
+import PSOCSchematic from "./img/PSOC Board.PNG";
+import audioAmpDiagram from "./img/audio_amp_diagram.png";
+import hbridge from "./img/20211209_163529.jpg"
+import PWMSwitch from "./img/pwm_switch.png"
+import hbridgeDiagram from "./img/hbridge_diagram.png"
 
 export default function Projects() {
   return <Container id="home-page">
@@ -72,6 +81,48 @@ export default function Projects() {
           internal contacts of the keyboard sheets and led out to attach to an ESP32S2, which would output a value
           based on detected electrical connection within the keyboard.
         </p>
+    </Row>
+    <Row>
+        <h3>This was Paris in 1970</h3>
+        <div className="img-row">
+          <Image src={paris1970} rounded/>
+          <Image src={paris1970Map} rounded/>
+        </div>
+        <div className="project-links">
+          <a href="https://paris1970.dhlab.mit.edu">Website</a>
+          <a href="https://github.com/dhmit/paris_1970">GitHub Repo</a>
+        </div>
+    </Row>
+    <Row>
+        <h3>Data Driven Democracy</h3>
+        <div className="img-row">
+          <Image src={DDD} rounded/>
+          <Image src={DDDMap} rounded/>
+        </div>
+        <div className="project-links">
+          <a href="https://datadrivendemocracy.dhlab.mit.edu">Website</a>
+          <a href="https://github.com/dhmit/data-driven-democracy">GitHub Repo</a>
+        </div>
+    </Row>
+    <Row>
+        <h3>Audio Processing Suite</h3>
+        <div className="img-row">
+          <Image src={PSOCSchematic} rounded/>
+          <Image src={audioAmpDiagram} rounded />
+        </div>
+        <div className="project-links">
+          <a href="https://github.com/JusticeV452/audio_processing_suite">GitHub Repo</a>
+        </div>
+    </Row>
+    <Row>
+        <h3>H-Bridge and Remote control</h3>
+        <div className="img-row">
+          <Image src={hbridgeDiagram} rounded/>
+        </div>
+        <div className="img-row">
+          <Image src={hbridge} rounded/>
+          <Image src={PWMSwitch} rounded />
+        </div>
     </Row>
   </Container>;
 }

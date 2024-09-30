@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import './scss/index.scss';
+import Home from './Home';
+import Projects from './Projects';
 import reportWebVitals from './reportWebVitals';
+import SiteNav from './components/SiteNav';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <SiteNav />
+    <Router>
+      {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+      </Routes>
+    </Router>
   </React.StrictMode>
 );
 

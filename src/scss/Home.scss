@@ -4,6 +4,22 @@
   * {
     margin: 0.2rem 0 0.2rem 0;
   }
+
+  .about-me {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    * {
+      width: 50%;
+    }
+
+    &-text > * {
+      width: 100%;
+      padding-right: 2rem;
+    }
+  }
+
 }
 
 .project-row {
@@ -47,6 +63,17 @@
   & > * {
     width: 45%;
     margin: 0.5rem !important;
+  }
+}
+
+.project-categories {
+  a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.3);
+    margin: 1rem !important;
+    padding: 2rem 2rem !important;    
   }
 }
 

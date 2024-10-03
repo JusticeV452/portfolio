@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function SiteNav() {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary" bg="primary" data-bs-theme="dark" style={{
+    <Navbar id="site-nav" expand="lg" className="bg-body-tertiary" bg="primary" data-bs-theme="dark" style={{
         position: "sticky",
         top: "0"
       }}>

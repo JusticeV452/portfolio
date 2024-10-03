@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import "./scss/Home.scss";
 import './scss/index.scss';
 import Home from './Home';
 import Projects from './Projects';

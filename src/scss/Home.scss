@@ -101,3 +101,11 @@
   margin-top: 2rem;
 }
 
+.code-display {
+  white-space: pre-wrap;
+  margin: 1rem;
+  * {
+    padding: 0;
+    margin: 0;
+  }
+}

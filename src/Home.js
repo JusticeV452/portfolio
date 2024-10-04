@@ -48,25 +48,31 @@ export default function Home() {
         </div>
       </div>
       <br />
-      <h3>My Projects</h3>
-      <Row className="project-categories">
-        {projectCategories.map((category, k) => {
-          return (
+      <Row>
+        <div style={{ width: "50%" }}>
+          <h3>My Projects</h3>
+          <Row className="project-categories">
+            {projectCategories.map((category, k) => {
+              return (
+                <a
+                  key={k}
+                  className="col btn btn-outline-secondary btn-lg"
+                  href={`/projects/#${pascalToSnakeCase(
+                    category.replace(" ", "")
+                  )}`}
+                  role="button"
+                >
+                  <div>{category}</div>
+                </a>
+              );
+            })}
+          </Row>
+        </div>
+        <div style={{ width: "50%" }}>
+          <h3>My Resume</h3>
+          <div style={{display: "flex", justifyContent: "center"}}>
             <a
-              key={k}
-              className="col btn btn-outline-secondary btn-lg"
-              href={`/projects/#${pascalToSnakeCase(
-                category.replace(" ", "")
-              )}`}
-              role="button"
-            >
-              <div>{category}</div>
-            </a>
-          );
-        })}
-      </Row>
-      <Row><a
-      className="link-button col btn btn-outline-secondary btn-lg"
+              className="link-button col btn btn-outline-secondary btn-lg"
               href={Resume}
               download="Justice_Vidal_Resume"
               target="_blank"
@@ -74,7 +80,10 @@ export default function Home() {
               role="button"
             >
               Download Resume (.pdf)
-            </a></Row>
+            </a>
+          </div>
+        </div>
+      </Row>
     </Container>
   );
 }

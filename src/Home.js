@@ -20,6 +20,12 @@ export default function Home() {
     "Embedded Systems",
     "Electrical Engineering",
   ];
+  const buttonColors = [
+    "danger",
+    "primary",
+    "success",
+    "warning",
+  ]
   return (
     <Container id="home-page">
       <div className="about-me">
@@ -56,7 +62,7 @@ export default function Home() {
               return (
                 <a
                   key={k}
-                  className="col btn btn-outline-secondary btn-lg"
+                  className={`col btn btn-${buttonColors[k]} btn-lg`}
                   href={`/projects/#${pascalToSnakeCase(
                     category.replace(" ", "")
                   )}`}
@@ -72,7 +78,7 @@ export default function Home() {
           <h3>My Resume</h3>
           <div style={{display: "flex", justifyContent: "center"}}>
             <a
-              className="link-button col btn btn-outline-secondary btn-lg"
+              className="link-button col btn btn-info btn-lg"
               href={Resume}
               download="Justice_Vidal_Resume"
               target="_blank"

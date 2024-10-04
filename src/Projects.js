@@ -24,6 +24,27 @@ import platfarmerStartScreen from "./img/platfarmer.png";
 import platfarmerDraft from "./img/platfarmer_draft.png";
 
 export default function Projects() {
+  // Page not auto scrolling to element after entering from another page
+  // https://github.com/vercel/next.js/issues/11109#issuecomment-751429015
+  React.useEffect(() => {
+    const path = window.location.hash;
+    if (path && path.includes("#")) {
+      setTimeout(() => {
+        const id = path.replace("#", "");
+        const el = window.document.getElementById(id);
+        if (!el) {
+          window.location.href = "/projects";
+        }
+        const navbar = window.document.getElementById("site-nav");
+        const rect = el.getBoundingClientRect();
+        window.top.scroll({
+          top: window.scrollY + rect.top - navbar.clientHeight,
+          behavior: "smooth",
+        });
+      }, 600);
+    }
+  });
+
   return (
     <Container id="project-page">
       <h2 className="category-header" id="machine-learning">

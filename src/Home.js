@@ -49,7 +49,7 @@ export default function Home() {
       </div>
       <br />
       <Row>
-        <div style={{ width: "50%" }}>
+        <div style={{ width: "50%", display: "flex", flexDirection: "column", alignItems: "center"}}>
           <h3>My Projects</h3>
           <Row className="project-categories">
             {projectCategories.map((category, k) => {
@@ -68,7 +68,7 @@ export default function Home() {
             })}
           </Row>
         </div>
-        <div style={{ width: "50%" }}>
+        <div style={{ width: "50%", display: "flex", flexDirection: "column", alignItems: "center"}}>
           <h3>My Resume</h3>
           <div style={{display: "flex", justifyContent: "center"}}>
             <a

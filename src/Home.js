@@ -4,6 +4,7 @@ import { Container, Row, Col, Button, Image } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Justice from "./img/IMG_0359.jpg";
+import Resume from "./documents/Justice_Vidal_Resume.pdf";
 
 function pascalToSnakeCase(str) {
   return str
@@ -64,6 +65,16 @@ export default function Home() {
           );
         })}
       </Row>
+      <Row><a
+      className="link-button col btn btn-outline-secondary btn-lg"
+              href={Resume}
+              download="Justice_Vidal_Resume"
+              target="_blank"
+              rel="noreferrer"
+              role="button"
+            >
+              Download Resume (.pdf)
+            </a></Row>
     </Container>
   );
 }

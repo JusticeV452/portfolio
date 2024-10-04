@@ -9,6 +9,16 @@ import reportWebVitals from './reportWebVitals';
 import SiteNav from './components/SiteNav';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
+import Resume from "./documents/Justice_Vidal_Resume.pdf";
+
+const PDFViewer = () => {
+  return (
+    <div>
+      <iframe src={Resume} width="100%" height="1000px" />
+    </div>
+  );
+};
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -20,6 +30,7 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/platfarmer-devlogs" element={<DevLogs />} />
+        <Route path="/resume" element={<PDFViewer />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>

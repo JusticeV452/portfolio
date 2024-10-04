@@ -17,6 +17,7 @@ function SiteNav() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
             <Nav.Link href="/projects">Projects</Nav.Link>
+            <Nav.Link href="/resume">Resume</Nav.Link>
             <Nav.Link href="https://github.com/JusticeV452">GitHub</Nav.Link>
             <Nav.Link href="https://www.linkedin.com/in/justice-vidal-838471121/">LinkedIn</Nav.Link>
           </Nav>

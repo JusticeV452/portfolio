@@ -4,6 +4,7 @@ import "./scss/Home.scss";
 import './scss/index.scss';
 import Home from './Home';
 import Projects from './Projects';
+import DevLogs from './DevLogs';
 import reportWebVitals from './reportWebVitals';
 import SiteNav from './components/SiteNav';
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
@@ -18,6 +19,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/platfarmer-devlogs" element={<DevLogs />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>

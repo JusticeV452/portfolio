@@ -231,6 +231,10 @@ export default function Projects() {
         <div className="project-links">
           <a href="https://paris1970.dhlab.mit.edu">Website</a>
           <a href="https://github.com/dhmit/paris_1970">GitHub Repo</a>
+          <a href="https://paris1970.dhlab.mit.edu/en/articles/fashion-in-1970s-paris/">
+            Fashion in 1970's Paris
+          </a>
+          <a href="/parse_fashion_data.py">Fashion in 1970's Paris Parser</a>
         </div>
       </Row>
       <Row>
@@ -287,6 +291,45 @@ export default function Projects() {
           <a href="https://github.com/dhmit/data-driven-democracy">
             GitHub Repo
           </a>
+        </div>
+      </Row>
+      <Row>
+        <h4>PlatFarmer</h4>
+        <h5 className="project-date">Fall 2022</h5>
+        <p>
+          This was a class project for MIT Creating Video Games (CMS.611) with 3
+          other students. The goal of the project was to create a user friendly
+          and enjoyable game with after going through multiple developing,
+          testing and feedback cycles.
+        </p>
+        <p>
+          This project was a great experience in getting to work on a team
+          consisting of people with different role types, namely, Artists, Level
+          Designers, Sound Designers, and Programmers. This project was also a
+          great experience in learning how to adapt to an existing project;
+          other students in the class had started the project and as a part of
+          the course, we could chose to continue our intial project or join
+          another team's project. I chose to join the PlatFarmer team because I
+          found the concept very interesting. To get my self on the same page as
+          the rest of the original team, I played through their original game
+          demo and looked over the codebase to bring to out first meeting as a
+          new team.
+        </p>
+        <p>
+          My role on the team was primarly a programmer and I worked on
+          miscillaneous bug fixes and adding changes that would diversify the
+          game experience. For example, I added different types of growable
+          crops and worked on the ability to plant crops anywhere to allow the
+          player to be more creative with their progression through levels.
+        </p>
+        <div className="img-row">
+          <Image src={platfarmerStartScreen} rounded />
+          <Image src={platfarmerDraft} rounded />
+        </div>
+        <div className="project-links">
+          <a href="https://trentpiercy.itch.io/platfarmer-v2">Game</a>
+          <a href="https://github.com/trentpiercy/PlatFarmer">GitHub Repo</a>
+          <a href="/platfarmer-devlogs">Dev Logs</a>
         </div>
       </Row>
       <h2 className="category-header" id="embedded-systems">

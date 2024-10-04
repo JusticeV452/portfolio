@@ -56,24 +56,27 @@ export default function Home() {
         </div>
       </div>
       <br />
-      <h3>My Projects</h3>
-      <Row className="project-categories">
-        {projectCategories.map((category, k) => {
-          return (
-            <a
-              key={k}
-              className="col btn btn-outline-secondary btn-lg"
-              href={`/projects/#${pascalToSnakeCase(
-                category.replace(" ", "")
-              )}`}
-              role="button"
-            >
-              <div>{category}</div>
-            </a>
-          );
-        })}
+      <Row><Col><PDFViewer /></Col>
+        <Col>
+        <h3>My Projects</h3>
+        <Row className="project-categories" style={{display: "flex", flexDirection: "row", width: "50%"}}>
+          {projectCategories.map((category, k) => {
+            return (
+              <a
+                key={k}
+                className="col btn btn-outline-secondary btn-lg"
+                href={`/projects/#${pascalToSnakeCase(
+                  category.replace(" ", "")
+                )}`}
+                role="button"
+              >
+                <div>{category}</div>
+              </a>
+            );
+          })}
+        </Row></Col>
+        
       </Row>
-      <PDFViewer />
     </Container>
   );
 }

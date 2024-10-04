@@ -66,6 +66,14 @@
   }
 }
 
+#project-page {
+  margin-top: 1rem;
+  margin-bottom: 80px;
+  Row {
+    margin: 2rem 0 2rem 0;
+  }
+}
+
 .project-categories {
   a {
     display: flex;
@@ -88,3 +96,8 @@
 .player-wrapper {
   padding: 0 2.5rem 1rem 2.5rem;
 }
+
+.category-header {
+  margin-top: 2rem;
+}
+

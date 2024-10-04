@@ -56,7 +56,7 @@ export default function Home() {
         </div>
       </div>
       <br />
-      <Row><Col><PDFViewer /></Col>
+      <Row>
         <Col>
         <h3>My Projects</h3>
         <Row className="project-categories" style={{display: "flex", flexDirection: "row", width: "50%"}}>
@@ -75,7 +75,7 @@ export default function Home() {
             );
           })}
         </Row></Col>
-        
+        <Col><PDFViewer /></Col>
       </Row>
     </Container>
   );

@@ -430,44 +430,44 @@ export default function Projects() {
         <h5 className="project-date">Summer 2023</h5>
         <p>
           This was a personal project to make the keyboard I had used for my
-          6.115 project a year prior usable again with typical a desktop
-          computer. After the class was finished, I had to return the PSoC board
-          I used to act as the keyboard controller, so I was no longer able to
-          use it. I enjoyed the aspect of giving new life to something when I
-          setup the keyboard the first time around, and I wanted to make sure
-          this was something I could still do a year afterward. This was also a
-          way to test my documentation and project organization skills, from the
-          past iteration. I was coming back to the project, not remembering
-          every detail of how it was setup and if my documentation was decent,
-          it would make the reimplementation a lot easier.
+          6.115 project a year prior usable again with a typical desktop
+          computer. At the end of the course, I had to return the PSoC board I
+          used as the keyboard controller, so I could no longer use the
+          keyboard. I enjoyed giving new life to something when I set up the
+          keyboard the first time around, and I wanted to make sure this was
+          something I could still do a year later. This was also a way to test
+          my documentation and project organization skills from the past
+          iteration. I was coming back to the project, not remembering every
+          detail of how I set it up, and if my documentation was decent, the
+          reimplementation would be a lot easier.
         </p>
         <p>
           For this project, I specifically chose to use only parts I had
-          available at the time in the spirit of reuse. For the new keyboard
-          controller, I used an ESP32S2 Dev Module board that I got to keep from
+          available at the time in the spirit of reuse: I used an ESP32S2 Dev
+          Module board for the new keyboard controller that I got to keep from
           another class. The same was true of the USB breakout board I used to
           connect the ESP to the computer.
         </p>
         <p>
-          Overall, I found my implementation straightforward to reimplment in
-          the Arduino IDE (from PSoC Creator), however interfacing with the
+          Overall, I found it straightforward to reimplement my code in the
+          Arduino IDE (from PSoC Creator); however, interfacing with the
           keyboard again took longer than I would have liked. The wires coming
           from the keyboard were not labeled, and I did not have an image of the
-          wiring of my initital circuit to see how the connections were
-          oriented. This unfortunately meant I needed to open the keyboard again
-          to see how the contact sheets were configured, which disturbed the
-          carefull alignment of contacts and the ends of the yellow wires.
+          wiring of my initial circuit to see how the connections were oriented.
+          This, unfortunately, meant I needed to open the keyboard again to see
+          how the contact sheets were configured, which disturbed the careful
+          alignment of contacts and the ends of the yellow wires.
         </p>
         <p>
           After seeing that my documentation could be improved in this way, I
           decided to make more clear indications of which wires were connected
           to which internal contact sheet. Ideally, it would have been nice to
           use different color wires for each contact sheet, although at the
-          time, I didn't have any of similar length. Instead, I chose to group
-          the wires together if they were connected to the same contact sheet.
-          Now, each of the 3 connector groups are split into two groups - one
+          time, I didn't have any of similar length. Instead, I grouped the
+          wires together if they were connected to the same contact sheet. Now,
+          each of the three connector groups are split into two groups - one
           half connected to one contact sheet and the other half connected to
-          the other sheet. I also, now have a picture of the keyboard connection
+          the other sheet. I also now have a picture of the keyboard connection
           to the ESP32 controller and a list of row and column pins in the
           Arduino source file to make it easier to return to the project again
           in the future.
@@ -475,7 +475,7 @@ export default function Projects() {
         <p>
           Since I have a working proof of concept for the keyboard driver, the
           next time I revisit this project, I think it would be interesting to
-          design a new PCB for the keyboard and miaturize the setup to make it
+          design a new PCB for the keyboard and miniaturize the setup to make it
           more usable.
         </p>
         <div className="img-row">

@@ -4,6 +4,14 @@ import { Container } from "react-bootstrap";
 export default function DevLogs() {
   return (
     <Container id="project-page">
+      <h4>PlatFarmer Developer Logs</h4>
+      <hr />
+      <p>
+        These entries are weekly records of the development of the PlatFarmer
+        game from my perspective and show my general actions for the project and
+        responses to the feedback we received during game development.
+      </p>
+      <br />
       <h5>Nov 1, 2022</h5>
       <p>
         Last week I joined the PlatFarmer team, and we discussed what changes we

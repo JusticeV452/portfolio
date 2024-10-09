@@ -213,6 +213,21 @@ export default function Projects() {
           .
         </p>
         <p>
+          In 2022, to demonstrate how historians could use the project to answer
+          research questions, the students working in the lab formed groups to
+          investigate a research question. My team focused on investigating
+          whether emerging fashion trends at the time, such as less formal denim
+          clothing, were captured in the photos and with what frequency. My role
+          on the team was to help make labels for images for trend analysis and
+          create the code for analyzing the trends. Ultimately, we hoped to
+          create enough labels to train a model on our dataset, but given our
+          limited time, we only drew trends from our hand-labeled data. In the
+          end, we primarily found that people were still dressing more formally,
+          which could indicate that people in Paris hadn't fully embraced denim
+          clothing. However, our data was limited , and a broader survey is
+          needed to reach a strong conclusion.
+        </p>
+        <p>
           I've enjoyed working on this project and other Digital Humanities for
           so long since it has been very interesting to see how the humanities
           and technology fields can benefit from each other; valuable resources

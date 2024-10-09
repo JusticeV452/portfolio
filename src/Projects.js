@@ -496,23 +496,73 @@ export default function Projects() {
       </h2>
       <hr />
       <Row>
-        <h4>H-Bridge and Remote Control</h4>
+        <h4>Remote Control Car Electrical Drive Circuitry</h4>
         <h5 className="project-date">Fall 2021</h5>
         <p>
           This was my final project for MIT's Power Electronics (6.131) course.
-          The goal of the project was to individually design and build the power
-          electronics for a system. The system I chose to design for was the
-          drive circuitry of a remote controlled car.
+          The goal of the project was to design and build the power electronics
+          for a system individually. I chose to design the drive circuitry for a
+          remote-controlled car with variable speed. The car would have two
+          motor-driven wheels, each capable of forward and reverse motion, and
+          to enable steering, each wheel would have independent control
+          circuitry. Since I wanted variable speed for the wheels, I used a buck
+          converter for efficient voltage regulation since I had experience
+          designing them during the course. Then, I used a buck converter on
+          each side to create a variable voltage difference that could change
+          the motor's spin direction. When designing the buck converter circuit,
+          my main considerations were part availability and size. Since the
+          hypothetical car I was designing for would have the inductors and
+          capacitors attached to it, I wanted to make those parts as small as
+          possible while sticking to the parts available in the lab. These
+          considerations led me to pick a 250 MHz PWM switching frequency, and
+          the resonance frequency of the capacitor and inductor were set to
+          approximately 250 Hz to avoid unstable behavior.
         </p>
-        <p></p>
+        <p>
+          I connected the MOSFETs (switches) labeled S2 and S3 to the same Pulse
+          Width Modulation (PWM) signal (same for S1 and S4) to make the voltage
+          at one side decrease when the other increased. This would result in
+          either roughly 15V being applied to side A, and 0V to side B, and visa
+          versa. My remote control board contained the PWM circuitry for the
+          buck converters and would be connected to the buck converters and
+          motors using long wires so I could control the speed from a distance
+          using potentiometers (pots).
+        </p>
         <div className="img-row">
           <Image src={hbridgeDiagram} rounded />
         </div>
+        <p>
+          Although this design allows for steering through independent control
+          of the two motors, moving in a straight line and varying speed would
+          be inconvenient because both pots would have to be increased at the
+          same time and rate to maintain straight motion. Otherwise, their
+          speeds would differ, causing undesired turning. The solution I
+          implemented to address this is the inclusion of additional switches on
+          the control board that could be flipped to change which PWM signal
+          controls each motor. Under steering operating conditions, motor 1
+          would be controlled by pot 1, and motor 2 would controlled by pot 2.
+          Then, for driving in a straight line, the switch next to the pot 1
+          could be switched to make both motor 1 and motor 2 controlled by pot
+          2. I implemented this behavior by connecting the switches next to the
+          pots to multiplexors I created using a set of NAND gates. Each
+          multiplexor would receive both PWM signals, and the PWM signal at the
+          output would change based on the switch position.
+        </p>
+        <p>
+          One thing that I would improve about my design if I were to
+          reimplement this project would be to add an on/off switch for my
+          switch drivers (IR2125s). This would allow for stopping the car easily
+          and avoid power draw when the motor is intended to be stopped (both
+          sides of the motor are being driven at 50% of the max voltage).
+        </p>
         <div className="img-row">
-          <Image src={hbridge} rounded />
+          <Col>
+            <Image src={hbridge} rounded />
+            <p>Final drive circuitry and motor</p>
+          </Col>
           <Col>
             <Image src={PWMSwitch} rounded />
-            <p>Motor PWM switch wiring diagram</p>
+            <p>Motor PWM multiplexor switch wiring diagram</p>
           </Col>
         </div>
         <div className="player-wrapper">

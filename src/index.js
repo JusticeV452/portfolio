@@ -1,20 +1,51 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import "./scss/Home.scss";
-import "./scss/index.scss";
-import Home from "./Home";
-import Projects from "./Projects";
-import DevLogs from "./DevLogs";
-import reportWebVitals from "./reportWebVitals";
-import SiteNav from "./components/SiteNav";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
+import ReactDOM from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
+
+import "./scss/Home.scss";
+import "./scss/index.scss";
+
+import Home from "./Home";
+import Projects from "./Projects";
+import DevLogs from "./DevLogs";
+import SiteNav from "./components/SiteNav";
+
+import parisFile from "./documents/parse_fashion_data.py";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+function ParisFileDisplay() {
+  const [fileText, setFileText] = useState("");
+
+  fetch(parisFile)
+    .then((response) => response.text())
+    .then((text) => setFileText(text));
+
+  return (
+    <>
+      <div className="code-display">
+        <a
+          href={parisFile}
+          download="parse_fashion_data.py"
+          target="_blank"
+          rel="noreferrer"
+        >
+          parse_fashion_data.py
+        </a>
+        <br />
+        <br />
+        {fileText}
+      </div>
+    </>
+  );
+}
 
 function SiteRouter() {
   // Page not auto scrolling to element after entering from another page
@@ -46,6 +77,7 @@ function SiteRouter() {
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/platfarmer-devlogs" element={<DevLogs />} />
+        <Route path="/parse_fashion_data.py" element={<ParisFileDisplay />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>

@@ -300,9 +300,9 @@ export default function Projects() {
         <p>
           This project was a great experience in getting to work on a team
           consisting of people with different role types, namely, Artists, Level
-          Designers, Sound Designers, and Programmers. This project was also a
-          great experience in learning how to adapt to an existing project.
-          Other students in the class started the project, and as a part of the
+          Designers, Sound Designers, and Programmers. It was also a great
+          experience in learning how to adapt to an existing project. Other
+          students in the class started the project, and as a part of the
           course, we could choose to continue our initial project or join
           another team's project. I chose to join the PlatFarmer team because I
           found the concept very interesting since it combined two typically
@@ -315,8 +315,10 @@ export default function Projects() {
           My role on the team was primarily a programmer, and I worked on
           miscellaneous bug fixes and adding changes that would diversify the
           game experience. For example, I added different types of growable
-          crops and worked on the ability to plant crops anywhere to allow the
-          player to be more creative with their progression through levels.
+          crops and worked on the ability to&nbsp;
+          <a href="/platfarmer-devlogs/#crops-anywhere">plant crops anywhere</a>
+          &nbsp;to allow the player to be more creative with their progression
+          through levels.
         </p>
         <div className="img-row">
           <Image src={platfarmerStartScreen} rounded />
@@ -396,7 +398,10 @@ export default function Projects() {
             <Image src={PSoCSchematic} rounded />
             <p>Schematic of the project main PSoC 5 board</p>
           </Col>
-          <Image src={audioAmpDiagram} rounded />
+          <Col>
+            <Image src={audioAmpDiagram} rounded />
+            <p>Output audio amplifier wiring diagram</p>
+          </Col>
         </div>
         <div className="project-links">
           <a href="https://github.com/JusticeV452/audio_processing_suite">
@@ -462,7 +467,10 @@ export default function Projects() {
             <Image src={keyboardInternals} rounded />
             <p>Tape-masked internal keyboard contacts</p>
           </Col>
-          <Image src={keyboardImg} rounded />
+          <Col>
+            <Image src={keyboardImg} rounded />
+            <p>Keyboard connected to ESP32 controller</p>
+          </Col>
         </div>
         <div className="project-links">
           <a href="https://github.com/JusticeV452/keyboard_restoration">

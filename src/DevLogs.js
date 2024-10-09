@@ -27,7 +27,7 @@ export default function DevLogs() {
         to something like level-village-level.
       </p>
       <h5>Nov 8, 2022</h5>
-      <p>
+      <p id="crops-anywhere">
         This week I began working with the code base for the PlatFarmer game.
         Since I recently joined, I first played through the game to get a good
         idea of how the game works. From the prototype from project 2, we

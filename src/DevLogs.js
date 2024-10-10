@@ -4,6 +4,14 @@ import { Container } from "react-bootstrap";
 export default function DevLogs() {
   return (
     <Container id="project-page">
+      <h4>PlatFarmer Developer Logs</h4>
+      <hr />
+      <p>
+        These entries are weekly records of the development of the PlatFarmer
+        game from my perspective and show my general actions for the project and
+        responses to the feedback we received during game development.
+      </p>
+      <br />
       <h5>Nov 1, 2022</h5>
       <p>
         Last week I joined the PlatFarmer team, and we discussed what changes we
@@ -19,7 +27,7 @@ export default function DevLogs() {
         to something like level-village-level.
       </p>
       <h5>Nov 8, 2022</h5>
-      <p>
+      <p id="crops-anywhere">
         This week I began working with the code base for the PlatFarmer game.
         Since I recently joined, I first played through the game to get a good
         idea of how the game works. From the prototype from project 2, we

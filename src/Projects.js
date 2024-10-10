@@ -14,7 +14,7 @@ import paris1970 from "./img/paris_1970_home.png";
 import paris1970Slider from "./img/paris_1970_slider.png";
 import DDD from "./img/datadrivendemocracy.png";
 import DDDMap from "./img/ddd_map.png";
-import PSOCSchematic from "./img/PSOC Board.PNG";
+import PSoCSchematic from "./img/PSOC Board.PNG";
 import audioAmpDiagram from "./img/audio_amp_diagram.png";
 import hbridge from "./img/20211209_163529.jpg";
 import PWMSwitch from "./img/pwm_switch.png";
@@ -24,27 +24,6 @@ import platfarmerStartScreen from "./img/platfarmer.png";
 import platfarmerDraft from "./img/platfarmer_draft.png";
 
 export default function Projects() {
-  // Page not auto scrolling to element after entering from another page
-  // https://github.com/vercel/next.js/issues/11109#issuecomment-751429015
-  React.useEffect(() => {
-    const path = window.location.hash;
-    if (path && path.includes("#")) {
-      setTimeout(() => {
-        const id = path.replace("#", "");
-        const el = window.document.getElementById(id);
-        if (!el) {
-          window.location.href = "/projects";
-        }
-        const navbar = window.document.getElementById("site-nav");
-        const rect = el.getBoundingClientRect();
-        window.top.scroll({
-          top: window.scrollY + rect.top - navbar.clientHeight,
-          behavior: "smooth",
-        });
-      }, 600);
-    }
-  });
-
   return (
     <Container id="project-page">
       <h2 className="category-header" id="machine-learning">
@@ -54,6 +33,19 @@ export default function Projects() {
       <Row>
         <h4>MEng Thesis: Scalable Embedded Tiny Machine Learning (SET ML)</h4>
         <h5 className="project-date">Fall 2023 - Fall 2024</h5>
+        <p>
+          The goal of this project is to create a general framework for machine
+          learning model inference across embedded devices. Distributing a
+          neural network across multiple devices could help reduce the amount of
+          miniaturization that needs to be done to fit a model on lightweight
+          hardware instead of trying to fit an entire model on one
+          microcontroller, the model's size only needs to be decreased enough to
+          fit in across the total combined memory of the devices used. Another
+          benefit of running a model across multiple embedded devices is that
+          you can tailor your hardware to the architecture of your model more
+          easily, potentially using lighter hardware for some segments and using
+          larger hardware only when necessary.
+        </p>
         <div className="img-row">
           <Col>
             <Image src={thesisDevBoard} rounded />
@@ -70,11 +62,35 @@ export default function Projects() {
           </a>
         </div>
         <p>
-          The goal of this project is to create a general framework for
-          distributed inference across extremely resource constrained
-          microcontrollers for arbitrary ML models and demonstrate its
-          applicability in scenarios requiring low power and form factor through
-          a gesture recognition implementation.
+          In order to be confident in my implementation's broader applicability,
+          I have been testing primarily with one of the most
+          resource-constrained devices, the STM32C0116-DK, which has 6KB of RAM
+          and 32KB of FLASH program memory. Due to its constraints, I initially
+          had issues finding a way to run a network using a pre-existing
+          implementation. TensorFlow Lite Micro was my first choice since it
+          enables standard Tensorflow models to be run on microcontrollers.
+          However, its data structures were too large for my test device. After
+          some research and experimentation, I found that the NNoM library on
+          GitHub was also designed for deploying TensorFlow models on
+          microcontrollers and their implementation was lightweight enough to
+          run on my device and easy to deploy with Arduino IDE. One drawback
+          however, is that the default library did not support models with
+          multiple inputs, so I would have to modify the C++ portion of the
+          library to enable support; this is a feature I need to compare
+          distributed inference and inference on a single device. For managing
+          the segmentation and distribution of models, I used Python since it
+          would be quick and accessible to use with TensorFlow. It would also be
+          easier to extend support to PyTorch in the future. When designing the
+          functions of my codebase, I tried to make them flexible to arbitrary
+          types of splitting and saving by making them accept functions as
+          parameters rather than set values, allowing people to define behavior
+          tailored to their desired application.
+        </p>
+        <p>
+          Ultimately, the application that I am pursuing to demonstrate my
+          library's functionality is a model that can handle gesture
+          recognition, taking advantage of the distributed nature of the
+          microcontrollers to collect spatial information.
         </p>
       </Row>
       <Row>
@@ -93,19 +109,19 @@ export default function Projects() {
           </a>
         </div>
         <p>
-          This was a class project for the course Efficient Tiny ML. We were
-          tasked with devising an open-ended project that would use the neural
-          network miniaturization techniques we learned over the semester. My
-          role on the project was creating the infrastructure for fine-tuning
-          and evaluating the models.
+          This was a class project for the Efficient Tiny ML course. We were
+          tasked with devising an open-ended project using the neural network
+          miniaturization techniques we learned over the semester in teams of 2
+          to 3 people. My role in the project was to create the infrastructure
+          for fine-tuning and evaluating the models.
         </p>
         <p>
           My first step in the process was devising a testing method to compare
-          the models to each other, and their relative performance gain/loss
+          the models to each other and their relative performance gain/loss
           after pruning. One consideration was simply comparing the Perplexity
-          loss (PPL) before and after training, however this isn't the best
-          indicator of prediction quality, since it is essentially an indicator
-          of how confident a model is in its predictions, rather than the
+          loss (PPL) before and after training. However, this isn't the best
+          indicator of prediction quality since it is essentially an indicator
+          of how confident a model is in its predictions rather than the
           validity of those predictions. After discussing with the group, we
           decided it would be best to use multiple choice questions since they
           could be used to determine the model's accuracy, a good measure of
@@ -128,15 +144,9 @@ export default function Projects() {
           The model would often generate one of the following types of
           responses:
         </p>
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
+        <div className="text-examples">
           <div className="code-display">
-            <div
-              style={{
-                padding: "0.5rem",
-                boxShadow: "1px 1px 1px 1px",
-                borderRadius: "0.25rem",
-              }}
-            >
+            <div>
               {`2. Which of these is a color?
             a. Alligator
             b. Blue
@@ -146,31 +156,23 @@ export default function Projects() {
             <p>Generation of another question it believes to be on topic</p>
           </div>
           <div className="code-display">
-            <div
-              style={{
-                padding: "0.5rem",
-                boxShadow: "1px 1px 1px 1px",
-                borderRadius: "0.25rem",
-              }}
-            >
-              {`e. Purple`}
-            </div>
+            <div>{`e. Purple`}</div>
             <p>Generation of more answer choices</p>
           </div>
         </div>
         <p>
           These types of responses would be difficult to account for in terms of
           making a parser for them, as the format varied based on the model, and
-          it left a much smaller number of usable questions. In order to address
-          this issue, I generated "best guesses" for the model whenever it did
-          not confidently label its response as an answer (explicitly respond
-          with "answer: choice") by using PPL and combinations of the questions
-          and answer choices.
+          ignoring these cases would leave a much smaller number of usable
+          questions. To address this issue, I generated "best guesses" for the
+          model whenever it did not confidently label its response as an answer
+          (explicitly respond with "answer: choice") by using PPL and
+          combinations of the questions and answer choices.
         </p>
         <p>
-          For example, for the previous question the PPL of the model for each
-          of the following strings would be measured and the string resulting in
-          the lowest perplexity would be chosen:
+          For example, for the previous question, I would measure the PPL of the
+          model for each of the following strings and interpret the string
+          resulting in the lowest perplexity as the model's answer:
         </p>
         <ListGroup style={{ marginBottom: "1rem" }}>
           <ListGroup.Item>Which of these is not a color? Red</ListGroup.Item>
@@ -179,12 +181,13 @@ export default function Projects() {
           <ListGroup.Item>Which of these is not a color? Green</ListGroup.Item>
         </ListGroup>
         <p>
-          The idea behind this approach is that since, PPL is a measure of how
-          confused a model is by a string, a well performing model would be
-          confused the least by the best answer choice. This approach was
-          ultimately found to work well for testing the model's multiple choice
-          performace since it correlated well with the correct answer choices
-          and was even found to improve in some cases after fine-tuning.
+          The idea behind this approach is that since PPL is effectively a
+          measure of how confused a model is by a string, a well-performing
+          model would be confused the least by the best answer choice.
+          Ultimately, this method worked well for testing the model's multiple
+          choice performance since it correlated well with the correct answer
+          choices. I even found that the measured accuracy when using this
+          method improved in some cases after fine-tuning.
         </p>
       </Row>
       <h2 className="category-header" id="software-development">
@@ -197,53 +200,78 @@ export default function Projects() {
         <p>
           During my time as an undergraduate researcher in the MIT Digital
           Humanities Lab (DH), Catherine Clark, an Associate Professor, asked
-          the lab to create a digital photo archive that could be used to
+          the lab to create a digital photo archive that anyone could use to
           navigate 100,000 photos from Paris in 1970. These photos were taken as
           a part of the "This was Paris in 1970" photo contest, in which people
           were asked to photograph areas of the city they found interesting or
-          significant during a time of major structural changes. Currently, the
-          original photos are archived in Bibliothèque historique de la Ville de
-          Paris making the general availibilty of the photos for viewing low,
-          which is what this project aims to remediate. During my time working
-          on the project over the course of 4 years, I have worked on many parts
-          of it including the backend database design and user interface. While
+          significant during major structural changes. Currently, the original
+          photos are archived in Bibliothèque historique de la Ville de Paris,
+          making the general availability of the photos for viewing low, which
+          is what this project aims to address.
+        </p>
+        <p>
+          While working on the project for 4 years, I have worked on many parts,
+          including the backend database design and user interface. While
           working in both areas, one of my major considerations was
-          functionality at scale given the ideal final state of the database. In
-          the frontend, this manifested in part as a question of how people
+          functionality at scale, given the ideal final state of the database.
+          In the frontend, this manifested in part as a question of how people
           would begin to explore and make sense of such a large collection of
-          photos. I worked to address this concern by implemeneting a reusable
-          photoslider component on the detailed photo information page that
+          photos. I worked to address this concern by implementing a reusable
+          photo slider component on the detailed photo information page that
           contained photos most similar to the currently viewed photo.
         </p>
         <p>
           In the early stages of the project, as we were considering useful
-          Computer Vision techniques to apply to the photos to generate
-          searchable metadata for them, one of the major methods we settled on
-          was object detection. To conduct the object detection we decided on
-          selecting one of 4 different machine learning models; You Only Look
-          Once (YOLO), R-CNN, Fast-RCNN, Retina-Net. I was tasked with
-          evaluating the R-CNN model and testing integration into our project
-          codebase. Given the size of our target database, one of our major
-          performance benchmarks was inference latency. After testing the speed
-          at which the models could process test images in our database, we
-          compared results and found that the YOLO model by far had the best
-          inference speed.
+          computer vision techniques to apply to the photos to generate
+          searchable metadata, one of the major methods we settled on was object
+          detection. To conduct the object detection, we decided to select one
+          of 4 different machine learning models: You Only Look Once (YOLO),
+          R-CNN, Fast-RCNN, and Retina-Net. I was tasked with evaluating the
+          R-CNN model and testing integration into our project codebase. Given
+          the size of our target database, one of our major performance
+          benchmarks was inference latency. After testing the speed at which the
+          models could process test images in our database, we compared results
+          and found that the YOLO model, by far, had the best inference speed.
         </p>
         <p>
-          After we decided on the YOLO model, not only because of its speed, but
+          After we decided on the YOLO model, not only because of its speed but
           also due to its ease of setup, I tested the quality of the model's
-          predictions by manually labeling some of the images, and comparing my
-          expected results to the model's output. From my testset of 46 images,
+          predictions by manually labeling some of the images and comparing my
+          expected results to the model's output. From my test set of 46 images,
           I found that the model had a precision of 97% and a recall of 33%.
-          According to these results, due to the low recall, we would likely be
-          missing many images with people in them, however we could be confident
-          that our metadata assignment would be correct due to the high
-          precision. In 2021 Funing Yang and I presented our findings for the
-          efficacy and role of object detection in the project at the&nbsp;
+          According to these results, we would likely miss images with people in
+          them due to the low recall. However, we could be confident that our
+          metadata assignment would be correct due to the high precision. In
+          2021, Funing Yang and I presented our findings on the efficacy and
+          role of object detection in the project at the&nbsp;
           <a href="https://ctdh.io/2021-conference/">
             Connecticut Digital Humanities 2021 Conference
           </a>
           .
+        </p>
+        <p>
+          In 2022, to demonstrate how historians could use the project to answer
+          research questions, the students working in the lab formed groups to
+          investigate a research question. My team focused on investigating
+          whether emerging fashion trends at the time, such as less formal denim
+          clothing, were captured in the photos and with what frequency. My role
+          on the team was to help make labels for images for trend analysis and
+          create the code for analyzing the trends. Ultimately, we hoped to
+          create enough labels to train a model on our dataset, but given our
+          limited time, we only drew trends from our hand-labeled data. In the
+          end, we primarily found that people were still dressing more formally,
+          which could indicate that people in Paris hadn't fully embraced denim
+          clothing. However, our data was limited , and a broader survey is
+          needed to reach a strong conclusion.
+        </p>
+        <p>
+          I've enjoyed working on this project and other Digital Humanities for
+          so long since it has been very interesting to see how the humanities
+          and technology fields can benefit from each other; valuable resources
+          can be made accessible to historians and humanists through data
+          science techniques and has helped me learn how to design systems for
+          the benefit of people and how technological design choices like the
+          representation of data can impact real people.
         </p>
         <div className="img-row">
           <Image src={paris1970} rounded />
@@ -282,11 +310,9 @@ export default function Projects() {
           When setting up the project infrastructure, one of my main
           considerations was the longevity and workability of the codebase. To
           this end, I updated the project's Python to the latest version and
-          Node to the latest Long Term Support version (20.11 LTS).
-        </p>
-        <p>
-          I also made the decision to switch the React infrastructure to use the
-          functional style of React programming, instead of continuing with the
+          Node to the latest Long Term Support version (20.11 LTS). I also made
+          the decision to switch the React infrastructure to use the functional
+          style of React programming, instead of continuing with the
           Class/Object based setup that was used up until that point. It would
           have been easier in the short term to use the same boilerplate code
           from past projects, however, the functional style of React appeared
@@ -319,29 +345,32 @@ export default function Projects() {
         <h5 className="project-date">Fall 2022</h5>
         <p>
           This was a class project for MIT Creating Video Games (CMS.611) with 3
-          other students. The goal of the project was to create a user friendly
-          and enjoyable game with after going through multiple developing,
-          testing and feedback cycles.
+          other students. The goal of the project was to create a user-friendly
+          and enjoyable game after going through multiple developing, testing,
+          and feedback cycles.
         </p>
         <p>
           This project was a great experience in getting to work on a team
           consisting of people with different role types, namely, Artists, Level
-          Designers, Sound Designers, and Programmers. This project was also a
-          great experience in learning how to adapt to an existing project;
-          other students in the class had started the project and as a part of
-          the course, we could chose to continue our intial project or join
+          Designers, Sound Designers, and Programmers. It was also a great
+          experience in learning how to adapt to an existing project. Other
+          students in the class started the project, and as a part of the
+          course, we could choose to continue our initial project or join
           another team's project. I chose to join the PlatFarmer team because I
-          found the concept very interesting. To get my self on the same page as
-          the rest of the original team, I played through their original game
-          demo and looked over the codebase to bring to out first meeting as a
+          found the concept very interesting since it combined two typically
+          separate kinds of games. To get myself on the same page as the rest of
+          the original team, I looked over the codebase and played through their
+          original game demo to bring constructive feedback to our meetings as a
           new team.
         </p>
         <p>
-          My role on the team was primarly a programmer and I worked on
-          miscillaneous bug fixes and adding changes that would diversify the
+          My role on the team was primarily a programmer, and I worked on
+          miscellaneous bug fixes and adding changes that would diversify the
           game experience. For example, I added different types of growable
-          crops and worked on the ability to plant crops anywhere to allow the
-          player to be more creative with their progression through levels.
+          crops and worked on the ability to&nbsp;
+          <a href="/platfarmer-devlogs/#crops-anywhere">plant crops anywhere</a>
+          &nbsp;to allow the player to be more creative with their progression
+          through levels.
         </p>
         <div className="img-row">
           <Image src={platfarmerStartScreen} rounded />
@@ -363,7 +392,7 @@ export default function Projects() {
         <p>
           This project was my final project for the Microcomputer Project
           Laboratory (6.115) course at MIT. For this project we were tasked with
-          individually designing and building an embedded system using the PSOC
+          individually designing and building an embedded system using the PSoC
           5 board we learned to use over the semester. My final goal for the
           project was to make a system capable of performing operations such as
           equalization, frequency filtering, amplification, and echo on multiple
@@ -381,14 +410,14 @@ export default function Projects() {
         <p>
           The microphone ADC was set to a sample conversion rate of 11025
           samples per second. This was set to match the sampling rate of files
-          the PSOC could play readily without stuttering. 11025 Hz is also
+          the PSoC could play readily without stuttering. 11025 Hz is also
           readily scalable to the common audio playback rate of 44100 Hz.
         </p>
         <p>
           The system has two modes of audio output, one in which the output is
-          set to be a square wave with adjustable frequency from the PSOC's PWM,
+          set to be a square wave with adjustable frequency from the PSoC's PWM,
           and another in which the output is set to be analog voltage output
-          from a PSOC Voltage DAC (labeled Sample_Player). When in "mode 0", the
+          from a PSoC Voltage DAC (labeled Sample_Player). When in "mode 0", the
           output corresponds to the PWM, and in "mode 1" the output corresponds
           to the output of the Sample_Player VDAC. In addition to being the
           direct output of the system in "mode 0", the PWM also functions to
@@ -413,15 +442,18 @@ export default function Projects() {
           originally configured to be wireless, there are no external
           connections to the contacts. Wires were directly connected to the
           internal contacts of the keyboard sheets and led out to attach to
-          another PSOC board, which would output a value based on detected
+          another PSoC board, which would output a value based on detected
           electrical connection within the keyboard.
         </p>
         <div className="img-row">
           <Col>
-            <Image src={PSOCSchematic} rounded />
-            <p>Schematic of the project main PSOC 5 board</p>
+            <Image src={PSoCSchematic} rounded />
+            <p>Schematic of the project main PSoC 5 board</p>
           </Col>
-          <Image src={audioAmpDiagram} rounded />
+          <Col>
+            <Image src={audioAmpDiagram} rounded />
+            <p>Output audio amplifier wiring diagram</p>
+          </Col>
         </div>
         <div className="project-links">
           <a href="https://github.com/JusticeV452/audio_processing_suite">
@@ -434,14 +466,63 @@ export default function Projects() {
         <h5 className="project-date">Summer 2023</h5>
         <p>
           This was a personal project to make the keyboard I had used for my
-          6.115 project a year prior usable again with typical desktop computer.
+          6.115 project a year prior usable again with a typical desktop
+          computer. At the end of the course, I had to return the PSoC board I
+          used as the keyboard controller, so I could no longer use the
+          keyboard. I enjoyed giving new life to something when I set up the
+          keyboard the first time around, and I wanted to make sure this was
+          something I could still do a year later. This was also a way to test
+          my documentation and project organization skills from the past
+          iteration. I was coming back to the project, not remembering every
+          detail of how I set it up, and if my documentation was decent, the
+          reimplementation would be a lot easier.
+        </p>
+        <p>
+          For this project, I specifically chose to use only parts I had
+          available at the time in the spirit of reuse: I used an ESP32S2 Dev
+          Module board for the new keyboard controller that I got to keep from
+          another class. The same was true of the USB breakout board I used to
+          connect the ESP to the computer.
+        </p>
+        <p>
+          Overall, I found it straightforward to reimplement my code in the
+          Arduino IDE (from PSoC Creator); however, interfacing with the
+          keyboard again took longer than I would have liked. The wires coming
+          from the keyboard were not labeled, and I did not have an image of the
+          wiring of my initial circuit to see how the connections were oriented.
+          This, unfortunately, meant I needed to open the keyboard again to see
+          how the contact sheets were configured, which disturbed the careful
+          alignment of contacts and the ends of the yellow wires.
+        </p>
+        <p>
+          After seeing that my documentation could be improved in this way, I
+          decided to make more clear indications of which wires were connected
+          to which internal contact sheet. Ideally, it would have been nice to
+          use different color wires for each contact sheet, although at the
+          time, I didn't have any of similar length. Instead, I grouped the
+          wires together if they were connected to the same contact sheet. Now,
+          each of the three connector groups are split into two groups - one
+          half connected to one contact sheet and the other half connected to
+          the other sheet. I also now have a picture of the keyboard connection
+          to the ESP32 controller and a list of row and column pins in the
+          Arduino source file to make it easier to return to the project again
+          in the future.
+        </p>
+        <p>
+          Since I have a working proof of concept for the keyboard driver, the
+          next time I revisit this project, I think it would be interesting to
+          design a new PCB for the keyboard and miniaturize the setup to make it
+          more usable.
         </p>
         <div className="img-row">
           <Col>
             <Image src={keyboardInternals} rounded />
             <p>Tape-masked internal keyboard contacts</p>
           </Col>
-          <Image src={keyboardImg} rounded />
+          <Col>
+            <Image src={keyboardImg} rounded />
+            <p>Keyboard connected to ESP32 controller</p>
+          </Col>
         </div>
         <div className="project-links">
           <a href="https://github.com/JusticeV452/keyboard_restoration">
@@ -454,21 +535,74 @@ export default function Projects() {
       </h2>
       <hr />
       <Row>
-        <h4>H-Bridge and Remote Control</h4>
+        <h4>Remote Control Car Electrical Drive Circuitry</h4>
         <h5 className="project-date">Fall 2021</h5>
         <p>
           This was my final project for MIT's Power Electronics (6.131) course.
-          The goal of the project was to individually design and build the power
-          electronics for a system. The system I chose to design for was the
-          drive circuitry of a remote controlled car.
+          The goal of the project was to design and build the power electronics
+          for a system individually. I chose to design the drive circuitry for a
+          remote-controlled car with variable speed. The car would have two
+          motor-driven wheels, each capable of forward and reverse motion, and
+          to enable steering, each wheel would have independent control
+          circuitry. Since I wanted variable speed for the wheels, I used a buck
+          converter for efficient voltage regulation since I had experience
+          designing them during the course. Then, I used a buck converter on
+          each side to create a variable voltage difference that could change
+          the motor's spin direction. When designing the buck converter circuit,
+          my main considerations were part availability and size. Since the
+          hypothetical car I was designing for would have the inductors and
+          capacitors attached to it, I wanted to make those parts as small as
+          possible while sticking to the parts available in the lab. These
+          considerations led me to pick a 250 MHz PWM switching frequency, and
+          the resonance frequency of the capacitor and inductor were set to
+          approximately 250 Hz to avoid unstable behavior.
         </p>
-        <p></p>
+        <p>
+          I connected the MOSFETs (switches) labeled S2 and S3 to the same Pulse
+          Width Modulation (PWM) signal (same for S1 and S4) to make the voltage
+          at one side decrease when the other increased. This would result in
+          either roughly 15V being applied to side A, and 0V to side B, and visa
+          versa. My remote control board contained the PWM circuitry for the
+          buck converters and would be connected to the buck converters and
+          motors using long wires so I could control the speed from a distance
+          using potentiometers (pots).
+        </p>
         <div className="img-row">
           <Image src={hbridgeDiagram} rounded />
         </div>
+        <p>
+          Although this design allows for steering through independent control
+          of the two motors, moving in a straight line and varying speed would
+          be inconvenient because both pots would have to be increased at the
+          same time and rate to maintain straight motion. Otherwise, their
+          speeds would differ, causing undesired turning. The solution I
+          implemented to address this is the inclusion of additional switches on
+          the control board that could be flipped to change which PWM signal
+          controls each motor. Under steering operating conditions, motor 1
+          would be controlled by pot 1, and motor 2 would controlled by pot 2.
+          Then, for driving in a straight line, the switch next to the pot 1
+          could be switched to make both motor 1 and motor 2 controlled by pot
+          2. I implemented this behavior by connecting the switches next to the
+          pots to multiplexors I created using a set of NAND gates. Each
+          multiplexor would receive both PWM signals, and the PWM signal at the
+          output would change based on the switch position.
+        </p>
+        <p>
+          One thing that I would improve about my design if I were to
+          reimplement this project would be to add an on/off switch for my
+          switch drivers (IR2125s). This would allow for stopping the car easily
+          and avoid power draw when the motor is intended to be stopped (both
+          sides of the motor are being driven at 50% of the max voltage).
+        </p>
         <div className="img-row">
-          <Image src={hbridge} rounded />
-          <Image src={PWMSwitch} rounded />
+          <Col>
+            <Image src={hbridge} rounded />
+            <p>Final drive circuitry and motor</p>
+          </Col>
+          <Col>
+            <Image src={PWMSwitch} rounded />
+            <p>Motor PWM multiplexor switch wiring diagram</p>
+          </Col>
         </div>
         <div className="player-wrapper">
           <ReactPlayer

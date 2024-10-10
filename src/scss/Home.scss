@@ -92,6 +92,15 @@
   }
 }
 
+.home-row {
+  & > div {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .link-button {
   display: flex;
     flex-direction: column;
@@ -124,5 +133,25 @@
   * {
     padding: 0;
     margin: 0;
+  }
+}
+
+.text-examples {
+  display: flex;
+  justify-content: space-around;
+
+  & > div {
+    width: 50%;
+  }
+
+  * > div {
+    padding: 0.5rem;
+    box-shadow: 1px 1px 1px 1px;
+    border-radius: 0.25rem;
+    height: 90%;
+  }
+
+  * > p {
+    text-align: center;
   }
 }

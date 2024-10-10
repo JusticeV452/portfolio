@@ -33,6 +33,19 @@ export default function Projects() {
       <Row>
         <h4>MEng Thesis: Scalable Embedded Tiny Machine Learning (SET ML)</h4>
         <h5 className="project-date">Fall 2023 - Fall 2024</h5>
+        <p>
+          The goal of this project is to create a general framework for machine
+          learning model inference across embedded devices. Distributing a
+          neural network across multiple devices could help reduce the amount of
+          miniaturization that needs to be done to fit a model on lightweight
+          hardware instead of trying to fit an entire model on one
+          microcontroller, the model's size only needs to be decreased enough to
+          fit in across the total combined memory of the devices used. Another
+          benefit of running a model across multiple embedded devices is that
+          you can tailor your hardware to the architecture of your model more
+          easily, potentially using lighter hardware for some segments and using
+          larger hardware only when necessary.
+        </p>
         <div className="img-row">
           <Col>
             <Image src={thesisDevBoard} rounded />
@@ -48,19 +61,6 @@ export default function Projects() {
             GitHub Repo
           </a>
         </div>
-        <p>
-          The goal of this project is to create a general framework for machine
-          learning model inference across embedded devices. Distributing a
-          neural network across multiple devices could help reduce the amount of
-          miniaturization that needs to be done to fit a model on lightweight
-          hardware instead of trying to fit an entire model on one
-          microcontroller, the model's size only needs to be decreased enough to
-          fit in across the total combined memory of the devices used. Another
-          benefit of running a model across multiple embedded devices is that
-          you can tailor your hardware to the architecture of your model more
-          easily, potentially using lighter hardware for some segments and using
-          larger hardware only when necessary.
-        </p>
         <p>
           In order to be confident in my implementation's broader applicability,
           I have been testing primarily with one of the most

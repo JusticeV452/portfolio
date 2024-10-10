@@ -17,14 +17,15 @@ import DevLogs from "./DevLogs";
 import SiteNav from "./components/SiteNav";
 
 import parisFile from "./documents/parse_fashion_data.py";
+import Resume from "./documents/Justice_Vidal_Resume.pdf";
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-function ParisFileDisplay() {
+function FileDisplay(file, downloadName) {
   const [fileText, setFileText] = useState("");
 
-  fetch(parisFile)
+  fetch(file)
     .then((response) => response.text())
     .then((text) => setFileText(text));
 
@@ -32,12 +33,12 @@ function ParisFileDisplay() {
     <>
       <div className="code-display">
         <a
-          href={parisFile}
-          download="parse_fashion_data.py"
+          href={file}
+          download={downloadName}
           target="_blank"
           rel="noreferrer"
         >
-          parse_fashion_data.py
+          {downloadName}
         </a>
         <br />
         <br />
@@ -46,6 +47,15 @@ function ParisFileDisplay() {
     </>
   );
 }
+
+const PDFViewer = (file) => {
+  return (
+    <div>
+      <iframe src={file} width="100%" height="1000px" />
+    </div>
+  );
+};
+
 
 function SiteRouter() {
   // Page not auto scrolling to element after entering from another page
@@ -77,7 +87,8 @@ function SiteRouter() {
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/platfarmer-devlogs" element={<DevLogs />} />
-        <Route path="/parse_fashion_data.py" element={<ParisFileDisplay />} />
+        <Route path="/parse_fashion_data.py" element={FileDisplay(parisFile, "parse_fashion_data.py")} />
+        <Route path="/resume" element={PDFViewer(Resume)} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>

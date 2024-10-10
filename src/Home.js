@@ -1,11 +1,10 @@
-import React from "react";
-import { Container, Row, Col, Button, Image } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Image } from "react-bootstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Justice from "./img/IMG_0359.jpg";
 import Resume from "./documents/Justice_Vidal_Resume.pdf";
-
 
 function pascalToSnakeCase(str) {
   return str
@@ -14,6 +13,55 @@ function pascalToSnakeCase(str) {
     .slice(1);
 }
 
+const HoverLinkButton = ({
+  className,
+  text,
+  color = "#fff",
+  backgroundColor = "#2b3035",
+  hoverColor = "#000",
+  hoverBackgroundColor,
+  children,
+  ...linkProps
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const onMouseEnter = () => {
+    setIsHovered(true);
+  };
+  const onMouseLeave = () => {
+    setIsHovered(false);
+  };
+  const style = {
+    color: isHovered ? hoverColor : color,
+    backgroundColor: isHovered ? hoverBackgroundColor : backgroundColor,
+  };
+
+  return (
+    <a
+      className={`col btn btn-lg ${className}`}
+      role="button"
+      style={style}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      {...linkProps}
+    >
+      <div>{children ? children : text}</div>
+    </a>
+  );
+};
+
+export const Embed = (props) => {
+  return (
+    <a
+      href={props.href || "#"}
+      target="_blank"
+      title={props.title || ""}
+      rel="noreferrer"
+    >
+      {props.children}
+    </a>
+  );
+};
 
 export default function Home() {
   const projectCategories = [
@@ -22,12 +70,9 @@ export default function Home() {
     "Embedded Systems",
     "Electrical Engineering",
   ];
-  const buttonColors = [
-    "danger",
-    "primary",
-    "success",
-    "warning",
-  ]
+  const backgroundColors = ["#d0f5e6", "#d0def5", "#f5f4d0", "#f5d0d0"];
+  // Used for border color and hover color
+  const buttonClasses = ["danger", "primary", "success", "warning"];
   return (
     <Container id="home-page">
       <div className="about-me">
@@ -62,16 +107,14 @@ export default function Home() {
           <Row className="project-categories">
             {projectCategories.map((category, k) => {
               return (
-                <a
+                <HoverLinkButton
                   key={k}
-                  className="col btn btn-outline-secondary btn-lg"
+                  className={`btn-${buttonClasses[k]}`}
                   href={`/projects/#${pascalToSnakeCase(
                     category.replace(" ", "")
                   )}`}
-                  role="button"
-                >
-                  <div>{category}</div>
-                </a>
+                  text={category}
+                />
               );
             })}
           </Row>
@@ -79,16 +122,15 @@ export default function Home() {
         <div>
           <h3>My Resume</h3>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <a
-              className="link-button col btn btn-outline-secondary btn-lg"
+            <HoverLinkButton
+              className={`link-button btn-info`}
               href={Resume}
               download="Justice_Vidal_Resume"
               target="_blank"
               rel="noreferrer"
-              role="button"
-            >
-              Download Resume (.pdf)
-            </a>
+              text="Download Resume (.pdf)"
+              hoverBackgroundColor="#1db3d1"
+            />
           </div>
         </div>
       </Row>

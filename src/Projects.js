@@ -73,14 +73,18 @@ export default function Projects() {
           some research and experimentation, I found that the NNoM library on
           GitHub was also designed for deploying TensorFlow models on
           microcontrollers and their implementation was lightweight enough to
-          run on my device and easy to deploy with Arduino IDE. Then, for
-          managing the segmentation and distribution of models, I used Python
-          since it would be quick and accessible to use with TensorFlow. It
-          would also be easier to extend support to PyTorch in the future. When
-          designing the functions of my codebase, I tried to make them flexible
-          to arbitrary types of splitting and saving by making them accept
-          functions as parameters rather than set values, allowing people to
-          define behavior tailored to their desired application.
+          run on my device and easy to deploy with Arduino IDE. One drawback
+          however, is that the default library did not support models with
+          multiple inputs, so I would have to modify the C++ portion of the
+          library to enable support; this is a feature I need to compare
+          distributed inference and inference on a single device. For managing
+          the segmentation and distribution of models, I used Python since it
+          would be quick and accessible to use with TensorFlow. It would also be
+          easier to extend support to PyTorch in the future. When designing the
+          functions of my codebase, I tried to make them flexible to arbitrary
+          types of splitting and saving by making them accept functions as
+          parameters rather than set values, allowing people to define behavior
+          tailored to their desired application.
         </p>
         <p>
           Ultimately, the application that I am pursuing to demonstrate my

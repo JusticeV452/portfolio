@@ -38,7 +38,7 @@ const HoverLinkButton = ({
 
   return (
     <a
-      className={`col btn btn-lg ${className}`}
+      className={`col btn btn-lg link-button ${className}`}
       role="button"
       style={style}
       onMouseEnter={onMouseEnter}
@@ -104,7 +104,7 @@ export default function Home() {
       <Row className="home-row">
         <div>
           <h3>My Projects</h3>
-          <Row className="project-categories">
+          <Row>
             {projectCategories.map((category, k) => {
               return (
                 <HoverLinkButton
@@ -123,7 +123,7 @@ export default function Home() {
           <h3>My Resume</h3>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <HoverLinkButton
-              className={`link-button btn-info`}
+              className="btn-info"
               href={Resume}
               download="Justice_Vidal_Resume"
               target="_blank"

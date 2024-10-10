@@ -49,11 +49,44 @@ export default function Projects() {
           </a>
         </div>
         <p>
-          The goal of this project is to create a general framework for
-          distributed inference across extremely resource constrained
-          microcontrollers for arbitrary ML models and demonstrate its
-          applicability in scenarios requiring low power and form factor through
-          a gesture recognition implementation.
+          The goal of this project is to create a general framework for machine
+          learning model inference across embedded devices. Distributing a
+          neural network across multiple devices could help reduce the amount of
+          miniaturization that needs to be done to fit a model on lightweight
+          hardware instead of trying to fit an entire model on one
+          microcontroller, the model's size only needs to be decreased enough to
+          fit in across the total combined memory of the devices used. Another
+          benefit of running a model across multiple embedded devices is that
+          you can tailor your hardware to the architecture of your model more
+          easily, potentially using lighter hardware for some segments and using
+          larger hardware only when necessary.
+        </p>
+        <p>
+          In order to be confident in my implementation's broader applicability,
+          I have been testing primarily with one of the most
+          resource-constrained devices, the STM32C0116-DK, which has 6KB of RAM
+          and 32KB of FLASH program memory. Due to its constraints, I initially
+          had issues finding a way to run a network using a pre-existing
+          implementation. TensorFlow Lite Micro was my first choice since it
+          enables standard Tensorflow models to be run on microcontrollers.
+          However, its data structures were too large for my test device. After
+          some research and experimentation, I found that the NNoM library on
+          GitHub was also designed for deploying TensorFlow models on
+          microcontrollers and their implementation was lightweight enough to
+          run on my device and easy to deploy with Arduino IDE. Then, for
+          managing the segmentation and distribution of models, I used Python
+          since it would be quick and accessible to use with TensorFlow. It
+          would also be easier to extend support to PyTorch in the future. When
+          designing the functions of my codebase, I tried to make them flexible
+          to arbitrary types of splitting and saving by making them accept
+          functions as parameters rather than set values, allowing people to
+          define behavior tailored to their desired application.
+        </p>
+        <p>
+          Ultimately, the application that I am pursuing to demonstrate my
+          library's functionality is a model that can handle gesture
+          recognition, taking advantage of the distributed nature of the
+          microcontrollers to collect spatial information.
         </p>
       </Row>
       <Row>

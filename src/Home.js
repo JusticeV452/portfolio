@@ -6,13 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Justice from "./img/IMG_0359.jpg";
 import Resume from "./documents/Justice_Vidal_Resume.pdf";
 
-const PDFViewer = () => {
-  return (
-    <div>
-      <iframe src={Resume} width="100%" height="500px" />
-    </div>
-  );
-};
 
 function pascalToSnakeCase(str) {
   return str
@@ -20,6 +13,7 @@ function pascalToSnakeCase(str) {
     .toLowerCase()
     .slice(1);
 }
+
 
 export default function Home() {
   const projectCategories = [

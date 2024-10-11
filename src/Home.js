@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Justice from "./img/IMG_0359.jpg";
 import Resume from "./documents/Justice_Vidal_Resume.pdf";
 
-function pascalToSnakeCase(str) {
+function pascalToKebabCase(str) {
   return str
     .replace(/([A-Z])/g, "-$1")
     .toLowerCase()
@@ -97,7 +97,7 @@ export default function Home() {
                 <HoverLinkButton
                   key={k}
                   className={`btn-${buttonClasses[k]}`}
-                  href={`/projects/#${pascalToSnakeCase(
+                  href={`/projects/#${pascalToKebabCase(
                     category.replace(" ", "")
                   )}`}
                   text={category}

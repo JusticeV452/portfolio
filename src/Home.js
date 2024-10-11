@@ -1,11 +1,10 @@
-import React from "react";
-import { Container, Row, Col, Button, Image } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Image } from "react-bootstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Justice from "./img/IMG_0359.jpg";
 import Resume from "./documents/Justice_Vidal_Resume.pdf";
-
 
 function pascalToSnakeCase(str) {
   return str
@@ -14,6 +13,42 @@ function pascalToSnakeCase(str) {
     .slice(1);
 }
 
+const HoverLinkButton = ({
+  className,
+  text,
+  color = "#fff",
+  backgroundColor = "#2b3035",
+  hoverColor = "#000",
+  hoverBackgroundColor,
+  children,
+  ...linkProps
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const onMouseEnter = () => {
+    setIsHovered(true);
+  };
+  const onMouseLeave = () => {
+    setIsHovered(false);
+  };
+  const style = {
+    color: isHovered ? hoverColor : color,
+    backgroundColor: isHovered ? hoverBackgroundColor : backgroundColor,
+  };
+
+  return (
+    <a
+      className={`col btn btn-lg link-button ${className}`}
+      role="button"
+      style={style}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      {...linkProps}
+    >
+      <div>{children ? children : text}</div>
+    </a>
+  );
+};
 
 export default function Home() {
   const projectCategories = [
@@ -22,6 +57,9 @@ export default function Home() {
     "Embedded Systems",
     "Electrical Engineering",
   ];
+
+  // Used for border color and hover color
+  const buttonClasses = ["danger", "primary", "success", "warning"];
   return (
     <Container id="home-page">
       <div className="about-me">
@@ -32,10 +70,10 @@ export default function Home() {
             enjoys building and creating, whether it's building computers or
             developing tools that make people's tasks easier. One of my favorite
             things is discovering connections between concepts, especially those
-            that are often thought of as separate, and deeper thinking about the
-            meaning of things, which I enjoyed in the exploration of in MIT's
-            Philosophy Minor track, the Metaphysics course being one of my
-            favorites. This curiosity has driven me to innovate and design
+            that are often thought of as separate. I also enjoy deeper thinking
+            about the meaning of things, which I enjoyed in the exploration of
+            in MIT's Philosophy Minor track, the Metaphysics course being one of
+            my favorites. This curiosity has driven me to innovate and design
             systems that are both intuitive and effective. I also believe this
             has contributed to my ability to quickly understand new technologies
             and adapt them to solve problems creatively.
@@ -53,19 +91,17 @@ export default function Home() {
       <Row className="home-row">
         <div>
           <h3>My Projects</h3>
-          <Row className="project-categories">
+          <Row>
             {projectCategories.map((category, k) => {
               return (
-                <a
+                <HoverLinkButton
                   key={k}
-                  className="col btn btn-outline-secondary btn-lg"
+                  className={`btn-${buttonClasses[k]}`}
                   href={`/projects/#${pascalToSnakeCase(
                     category.replace(" ", "")
                   )}`}
-                  role="button"
-                >
-                  <div>{category}</div>
-                </a>
+                  text={category}
+                />
               );
             })}
           </Row>
@@ -73,16 +109,15 @@ export default function Home() {
         <div>
           <h3>My Resume</h3>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <a
-              className="link-button col btn btn-outline-secondary btn-lg"
+            <HoverLinkButton
+              className="btn-info"
               href={Resume}
               download="Justice_Vidal_Resume"
               target="_blank"
               rel="noreferrer"
-              role="button"
-            >
-              Download Resume (.pdf)
-            </a>
+              text="Download Resume (.pdf)"
+              hoverBackgroundColor="#1db3d1"
+            />
           </div>
         </div>
       </Row>

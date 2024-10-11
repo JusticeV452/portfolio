@@ -34,17 +34,18 @@ export default function Projects() {
         <h4>MEng Thesis: Scalable Embedded Tiny Machine Learning (SET ML)</h4>
         <h5 className="project-date">Fall 2023 - Fall 2024</h5>
         <p>
-          The goal of this project is to create a general framework for machine
-          learning model inference across embedded devices. Distributing a
-          neural network across multiple devices could help reduce the amount of
-          miniaturization that needs to be done to fit a model on lightweight
-          hardware instead of trying to fit an entire model on one
-          microcontroller, the model's size only needs to be decreased enough to
-          fit in across the total combined memory of the devices used. Another
-          benefit of running a model across multiple embedded devices is that
-          you can tailor your hardware to the architecture of your model more
-          easily, potentially using lighter hardware for some segments and using
-          larger hardware only when necessary.
+          The goal of this project is to create a general framework for running
+          Machine Learning (ML) models over multiple efficient embedded devices.
+          Instead of a single large device, smaller, more efficient devices can
+          communicate to run an ML model, potentially allowing for better
+          scalability, redundancy, and lower energy usage. If necessary, more
+          intensive parts of a model can be run on larger hardware, while
+          smaller devices can be used for the rest of the model. Distributing a
+          neural network across multiple devices could also reduce the time and
+          resources needed to miniaturize an ML model. Instead of trying to fit
+          an entire model on one microcontroller, its size only needs to be
+          decreased enough to fit in across the total combined storage of the
+          devices used.
         </p>
         <div className="img-row">
           <Col>
@@ -53,7 +54,9 @@ export default function Projects() {
           </Col>
           <Col>
             <Image src={SETMLModel} rounded />
-            <p>First iteration of segmented gesture detection model</p>
+            <p>
+              Subsection of segmented gesture detection model first iteration
+            </p>
           </Col>
         </div>
         <div className="project-links">
@@ -87,10 +90,14 @@ export default function Projects() {
           tailored to their desired application.
         </p>
         <p>
-          Ultimately, the application that I am pursuing to demonstrate my
-          library's functionality is a model that can handle gesture
-          recognition, taking advantage of the distributed nature of the
-          microcontrollers to collect spatial information.
+          Ultimately, the application I am pursuing to demonstrate my library's
+          functionality is a model that can handle gesture recognition, taking
+          advantage of the distributed nature of the microcontrollers to collect
+          spatial information. The current design is that a microcontroller
+          would fit on each finger segment, and motion data would come in
+          through accelerometers on the fingertips and base of the hand.
+          Overall, the entire system would be nearly seamless due to the
+          extremely small nature of the microprocessors.
         </p>
       </Row>
       <Row>
@@ -200,14 +207,14 @@ export default function Projects() {
         <p>
           During my time as an undergraduate researcher in the MIT Digital
           Humanities Lab (DH), Catherine Clark, an Associate Professor, asked
-          the lab to create a digital photo archive that anyone could use to
-          navigate 100,000 photos from Paris in 1970. These photos were taken as
-          a part of the "This was Paris in 1970" photo contest, in which people
-          were asked to photograph areas of the city they found interesting or
+          the lab to create an accessible online digital photo archive of
+          100,000 photos from Paris in 1970. These photos were taken as a part
+          of the "This was Paris in 1970" photo contest, in which people were
+          asked to photograph areas of the city they found interesting or
           significant during major structural changes. Currently, the original
           photos are archived in Bibliothèque historique de la Ville de Paris,
-          making the general availability of the photos for viewing low, which
-          is what this project aims to address.
+          making the general availability of the photos for viewing relatively
+          low.
         </p>
         <p>
           While working on the project for 4 years, I have worked on many parts,
@@ -226,12 +233,13 @@ export default function Projects() {
           searchable metadata, one of the major methods we settled on was object
           detection. To conduct the object detection, we decided to select one
           of 4 different machine learning models: You Only Look Once (YOLO),
-          R-CNN, Fast-RCNN, and Retina-Net. I was tasked with evaluating the
-          R-CNN model and testing integration into our project codebase. Given
-          the size of our target database, one of our major performance
-          benchmarks was inference latency. After testing the speed at which the
-          models could process test images in our database, we compared results
-          and found that the YOLO model, by far, had the best inference speed.
+          Region-based Convolutional Neural Network (R-CNN), Fast-RCNN, and
+          Retina-Net. I was tasked with evaluating the R-CNN model and testing
+          integration into our project codebase. Given the size of our target
+          database, one of our major performance benchmarks was inference
+          latency. After testing the speed at which the models could process
+          test images in our database, we compared results and found that the
+          YOLO model, by far, had the best inference speed.
         </p>
         <p>
           After we decided on the YOLO model, not only because of its speed but

@@ -83,10 +83,10 @@ export default function Home() {
             enjoys building and creating, whether it's building computers or
             developing tools that make people's tasks easier. One of my favorite
             things is discovering connections between concepts, especially those
-            that are often thought of as separate, and deeper thinking about the
-            meaning of things, which I enjoyed in the exploration of in MIT's
-            Philosophy Minor track, the Metaphysics course being one of my
-            favorites. This curiosity has driven me to innovate and design
+            that are often thought of as separate. I also enjoy deeper thinking
+            about the meaning of things, which I enjoyed in the exploration of
+            in MIT's Philosophy Minor track, the Metaphysics course being one of
+            my favorites. This curiosity has driven me to innovate and design
             systems that are both intuitive and effective. I also believe this
             has contributed to my ability to quickly understand new technologies
             and adapt them to solve problems creatively.

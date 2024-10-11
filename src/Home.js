@@ -50,19 +50,6 @@ const HoverLinkButton = ({
   );
 };
 
-export const Embed = (props) => {
-  return (
-    <a
-      href={props.href || "#"}
-      target="_blank"
-      title={props.title || ""}
-      rel="noreferrer"
-    >
-      {props.children}
-    </a>
-  );
-};
-
 export default function Home() {
   const projectCategories = [
     "Machine Learning",
@@ -70,7 +57,7 @@ export default function Home() {
     "Embedded Systems",
     "Electrical Engineering",
   ];
-  const backgroundColors = ["#d0f5e6", "#d0def5", "#f5f4d0", "#f5d0d0"];
+
   // Used for border color and hover color
   const buttonClasses = ["danger", "primary", "success", "warning"];
   return (

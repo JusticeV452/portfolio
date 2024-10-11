@@ -54,7 +54,9 @@ export default function Projects() {
           </Col>
           <Col>
             <Image src={SETMLModel} rounded />
-            <p>First iteration of segmented gesture detection model</p>
+            <p>
+              Subsection of segmented gesture detection model first iteration
+            </p>
           </Col>
         </div>
         <div className="project-links">
@@ -88,10 +90,14 @@ export default function Projects() {
           tailored to their desired application.
         </p>
         <p>
-          Ultimately, the application that I am pursuing to demonstrate my
-          library's functionality is a model that can handle gesture
-          recognition, taking advantage of the distributed nature of the
-          microcontrollers to collect spatial information.
+          Ultimately, the application I am pursuing to demonstrate my library's
+          functionality is a model that can handle gesture recognition, taking
+          advantage of the distributed nature of the microcontrollers to collect
+          spatial information. The current design is that a microcontroller
+          would fit on each finger segment, and motion data would come in
+          through accelerometers on the fingertips and base of the hand.
+          Overall, the entire system would be nearly seamless due to the
+          extremely small nature of the microprocessors.
         </p>
       </Row>
       <Row>

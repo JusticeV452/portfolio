@@ -66,23 +66,24 @@ export default function Projects() {
         </div>
         <p>
           In order to be confident in my implementation's broader applicability,
-          I have been testing primarily with one of the most
-          resource-constrained devices, the STM32C0116-DK, which has 6KB of RAM
-          and 32KB of FLASH program memory. Due to its constraints, I initially
-          had issues finding a way to run a network using a pre-existing
-          implementation. TensorFlow Lite Micro was my first choice since it
-          enables standard Tensorflow models to be run on microcontrollers.
-          However, its data structures were too large for my test device. After
-          some research and experimentation, I found that the NNoM library on
-          GitHub was also designed for deploying TensorFlow models on
+          I have been testing primarily with the STM32C0116-DK, which has 6KB of
+          RAM and 32KB of FLASH program memory. Due to its constraints, I
+          initially had issues finding a way to run a network using a
+          pre-existing implementation. TensorFlow Lite Micro was my first choice
+          since it enables standard Tensorflow models to be run on
+          microcontrollers. However, its data structures were too large for the
+          device. After some research and experimentation, I found that the NNoM
+          library on GitHub was also designed for deploying TensorFlow models on
           microcontrollers and their implementation was lightweight enough to
-          run on my device and easy to deploy with Arduino IDE. One drawback
+          run on the device and easy to deploy with Arduino IDE. One drawback
           however, is that the default library did not support models with
-          multiple inputs, so I would have to modify the C++ portion of the
-          library to enable support; this is a feature I need to compare
-          distributed inference and inference on a single device. For managing
-          the segmentation and distribution of models, I used Python since it
-          would be quick and accessible to use with TensorFlow. It would also be
+          multiple inputs, so I modified the library's C++ code generator to
+          create multiple sub-models that would run on the same device with code
+          to pass inputs between them. This is a feature I needed to compare
+          distributed inference and inference on a single device and greater
+          flexibility in weights assignment to devices. For managing the
+          segmentation and distribution of models, I used Python since it would
+          be quick and accessible to use with TensorFlow. It would also be
           easier to extend support to PyTorch in the future. When designing the
           functions of my codebase, I tried to make them flexible to arbitrary
           types of splitting and saving by making them accept functions as
@@ -90,14 +91,14 @@ export default function Projects() {
           tailored to their desired application.
         </p>
         <p>
-          Ultimately, the application I am pursuing to demonstrate my library's
-          functionality is a model that can handle gesture recognition, taking
-          advantage of the distributed nature of the microcontrollers to collect
-          spatial information. The current design is that a microcontroller
-          would fit on each finger segment, and motion data would come in
-          through accelerometers on the fingertips and base of the hand.
-          Overall, the entire system would be nearly seamless due to the
-          extremely small nature of the microprocessors.
+          Ultimately, the application I am designing my framework around is
+          gesture recognition, since it could take advantage of the distributed
+          nature of the microcontrollers to collect spatial information. The
+          current design is that a microcontroller would fit on each finger
+          segment, and motion data would come in through accelerometers on the
+          fingertips and base of the hand. Overall, the entire system would be
+          nearly seamless due to the extremely small nature of the
+          microprocessors.
         </p>
       </Row>
       <Row>

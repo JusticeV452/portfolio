@@ -32,8 +32,8 @@ export default function Projects() {
       <hr />
       <Row>
         <h4>
-          MEng Thesis: Scalable Embedded Tiny Machine Learning (SETML): A
-          General Framework for Embedded Distributed Inference
+          MEng Thesis: "Scalable Embedded Tiny Machine Learning (SETML): A
+          General Framework for Embedded Distributed Inference"
         </h4>
         <h5 className="project-date">Fall 2023 - January 2025</h5>
         <p>

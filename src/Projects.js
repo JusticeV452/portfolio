@@ -31,8 +31,11 @@ export default function Projects() {
       </h2>
       <hr />
       <Row>
-        <h4>MEng Thesis: Scalable Embedded Tiny Machine Learning (SET ML)</h4>
-        <h5 className="project-date">Fall 2023 - Fall 2024</h5>
+        <h4>
+          Scalable Embedded Tiny Machine Learning (SETML): A General Framework
+          for Embedded Distributed Inference
+        </h4>
+        <h5 className="project-date">Fall 2023 - January 2025</h5>
         <p>
           The goal of this project is to create a general framework for running
           Machine Learning (ML) models over multiple efficient embedded devices.
@@ -60,9 +63,7 @@ export default function Projects() {
           </Col>
         </div>
         <div className="project-links">
-          <a href="https://github.com/JusticeV452/tensorflow_model_splitter">
-            GitHub Repo
-          </a>
+          <a href="https://github.com/JusticeV452/SETML">GitHub Repo</a>
         </div>
         <p>
           In order to be confident in my implementation's broader applicability,
